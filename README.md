@@ -2,42 +2,15 @@
 
 ## Commit Convention
 
-1. Commit Message Structure
-
-   제목 / 본문 / 꼬리말로 구성
-
-   ```
-   type : subject
-
-   body(생략가능)
-
-   footer(생략가능)
-   ```
-
-2. Commit Type
-
-   1. feat: 새로운 기능 추가
-
-   2. fix: 버그 수정
-   3. docs: 문서 수정
-   4. style: 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
-   5. refactor: 코드 리팩토링
-   6. test: 테스트 코드, 리펙토링 테스트 코드 추가
-
-3. Subject
-
-   과거 시제를 사용하지 않고, 명령어로 작성
-
-   50자를 넘기지 않고, 대문자로 작성하고 마침표를 붙이지 않는다.
-
-4. Body
-
-   부연설명이 필요하거나 커밋의 이유를 설명할 경우 작성.
-
-5. footer
-
-   issue tracker id를 작성할 때 사용한다.
-
-```
-ex) feat: 유저조회 기능 추가
-```
+- feat : 기능 (새로운 기능)
+- fix : 버그 (버그 수정)
+- refactor : 리팩토링
+- design : CSS 등 사용자 UI 디자인 변경
+- comment : 필요한 주석 추가 및 변경
+- style : 스타일 (코드 형식, 세미콜론 추가: 비즈니스 로직에 변경 없음)
+- docs : 문서 수정 (문서 추가, 수정, 삭제, README)
+- test : 테스트 (테스트 코드 추가, 수정, 삭제: 비즈니스 로직에 변경 없음)
+- chore : 기타 변경사항 (빌드 스크립트 수정, assets, 패키지 매니저 등)
+- init : 초기 생성
+- rename : 파일 혹은 폴더명을 수정하거나 옮기는 작업만 한 경우
+- remove : 파일을 삭제하는 작업만 수행한 경우
