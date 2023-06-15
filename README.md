@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# 피파4 데이터센터
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Commit Convention
 
-## Available Scripts
+1. Commit Message Structure
 
-In the project directory, you can run:
+   제목 / 본문 / 꼬리말로 구성
 
-### `npm start`
+   ```
+   type : subject
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   body(생략가능)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+   footer(생략가능)
+   ```
 
-### `npm test`
+2. Commit Type
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   1. feat: 새로운 기능 추가
 
-### `npm run build`
+   2. fix: 버그 수정
+   3. docs: 문서 수정
+   4. style: 코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우
+   5. refactor: 코드 리팩토링
+   6. test: 테스트 코드, 리펙토링 테스트 코드 추가
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Subject
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   과거 시제를 사용하지 않고, 명령어로 작성
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   50자를 넘기지 않고, 대문자로 작성하고 마침표를 붙이지 않는다.
 
-### `npm run eject`
+4. Body
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   부연설명이 필요하거나 커밋의 이유를 설명할 경우 작성.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. footer
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   issue tracker id를 작성할 때 사용한다.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+ex) feat: 유저조회 기능 추가
+```
