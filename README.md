@@ -15,6 +15,14 @@
 - rename : 파일 혹은 폴더명을 수정하거나 옮기는 작업만 한 경우
 - remove : 파일을 삭제하는 작업만 수행한 경우
 
+---
+
 ## API 구조
 
 ![Alt text](image.png)
+
+## Mid-Fi Prototype
+
+![Alt text](image-1.png)
+
+[figma](https://www.figma.com/file/MNS7rcCsW5E1rDPh73UG9g/fifo4-prototype?type=design&node-id=0%3A1&t=TPzskpAozWbwJdkZ-1)
