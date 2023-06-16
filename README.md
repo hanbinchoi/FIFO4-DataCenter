@@ -14,3 +14,7 @@
 - init : 초기 생성
 - rename : 파일 혹은 폴더명을 수정하거나 옮기는 작업만 한 경우
 - remove : 파일을 삭제하는 작업만 수행한 경우
+
+## API 구조
+
+![Alt text](image.png)

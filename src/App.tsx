@@ -3,10 +3,6 @@ import { createGlobalStyle } from "styled-components";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
