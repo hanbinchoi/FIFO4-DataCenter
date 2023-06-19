@@ -7,6 +7,8 @@ import { darkTheme } from "./theme";
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.7/dist/web/static/pretendard-dynamic-subset.css");
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -34,6 +36,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -53,15 +56,18 @@ table {
 `;
 
 const Container = styled.div`
+  @media (max-width: 255px) {
+    display: none;
+  }
   @media (min-width: 390px) {
-    background-color: black;
+    display: none;
   }
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 1rem 100px;
+  padding: 1rem 1rem;
   border: 1px solid blue;
   background-color: ${(props) => props.theme.bgColor};
 `;

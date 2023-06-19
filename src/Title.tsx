@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 
 const TitleText = styled.div`
-  font-size: 3rem;
+  font-size: 2rem;
   color: ${(props) => props.theme.textColor};
 `;
 
 function Title() {
-  return <TitleText>hello</TitleText>;
+  return <TitleText>FIF4 DataCenter</TitleText>;
 }
 
 export default Title;
