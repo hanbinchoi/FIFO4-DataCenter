@@ -3,6 +3,7 @@ import { createGlobalStyle, styled } from "styled-components";
 import Title from "./Title";
 import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./theme";
+import Search from "./Search";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
@@ -59,13 +60,15 @@ const Container = styled.div`
   @media (max-width: 255px) {
     display: none;
   }
-  @media (min-width: 390px) {
+  /* @media (min-width: 390px) {
     display: none;
-  }
+  } */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: 100vw;
 
   padding: 1rem 1rem;
   border: 1px solid blue;
@@ -80,6 +83,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <Container>
           <Title />
+          <Search />
         </Container>
       </ThemeProvider>
     </>
