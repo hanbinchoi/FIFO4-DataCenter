@@ -1,5 +1,8 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, styled } from "styled-components";
+import Title from "./Title";
+import { ThemeProvider } from "styled-components";
+import { darkTheme } from "./theme";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
@@ -49,11 +52,30 @@ table {
 }
 `;
 
+const Container = styled.div`
+  @media (min-width: 390px) {
+    background-color: black;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 100px;
+  border: 1px solid blue;
+  background-color: ${(props) => props.theme.bgColor};
+`;
+
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h1>hello</h1>
+
+      <ThemeProvider theme={darkTheme}>
+        <Container>
+          <Title />
+        </Container>
+      </ThemeProvider>
     </>
   );
 }
