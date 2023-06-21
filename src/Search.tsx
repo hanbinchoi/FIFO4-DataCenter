@@ -1,11 +1,13 @@
-import { ChangeEventHandler, useState } from "react";
+import { useState } from "react";
 import { styled } from "styled-components";
 import { fetchData } from "./api";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { nicknameState } from "./atoms";
 
 const SearchBar = styled.form`
   display: flex;
   margin: 2rem;
-  width: 0%;
+  width: 40%;
   padding: 0 100px;
   gap: 0.5rem;
 `;
@@ -27,18 +29,20 @@ const Input = styled.input`
 `;
 function Search() {
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setNickname(event.currentTarget.value);
+    setValue(event.currentTarget.value);
   };
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setNickname("");
+    setNickName(value);
+    setValue("");
   };
 
-  const [nickname, setNickname] = useState("");
+  const [value, setValue] = useState("");
+  const setNickName = useSetRecoilState(nicknameState);
   return (
     <SearchBar onSubmit={onSubmit}>
       <Input
-        value={nickname}
+        value={value}
         placeholder="닉네임을 입력하세요"
         onChange={onChange}
       />

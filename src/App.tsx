@@ -6,6 +6,8 @@ import { darkTheme } from "./theme";
 import Search from "./Search";
 import { useQuery } from "react-query";
 import { fetchData } from "./api";
+import { useRecoilValue } from "recoil";
+import { nicknameState } from "./atoms";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
@@ -78,8 +80,11 @@ const Container = styled.div`
 `;
 
 function App() {
-  const { isLoading, data } = useQuery("data", () => fetchData("호날두"));
-  console.log(isLoading, data);
+  const nickname = useRecoilValue(nicknameState);
+  console.log(nickname);
+
+  // const { isLoading, data } = useQuery("data", () => fetchData(nickname));
+  // console.log(isLoading, data);
 
   return (
     <>
