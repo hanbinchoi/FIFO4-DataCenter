@@ -1,10 +1,11 @@
 import { ChangeEventHandler, useState } from "react";
 import { styled } from "styled-components";
+import { fetchData } from "./api";
 
 const SearchBar = styled.form`
   display: flex;
   margin: 2rem;
-  width: 30%;
+  width: 0%;
   padding: 0 100px;
   gap: 0.5rem;
 `;
@@ -26,20 +27,18 @@ const Input = styled.input`
 `;
 function Search() {
   const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log(event.currentTarget.value);
-    setText(event.currentTarget.value);
+    setNickname(event.currentTarget.value);
   };
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setText("");
-    console.dir(event.currentTarget);
+    setNickname("");
   };
 
-  const [text, setText] = useState("");
+  const [nickname, setNickname] = useState("");
   return (
     <SearchBar onSubmit={onSubmit}>
       <Input
-        value={text}
+        value={nickname}
         placeholder="닉네임을 입력하세요"
         onChange={onChange}
       />

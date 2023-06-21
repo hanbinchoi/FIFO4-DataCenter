@@ -4,6 +4,8 @@ import Title from "./Title";
 import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./theme";
 import Search from "./Search";
+import { useQuery } from "react-query";
+import { fetchData } from "./api";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
@@ -76,6 +78,9 @@ const Container = styled.div`
 `;
 
 function App() {
+  const { isLoading, data } = useQuery("data", () => fetchData("호날두"));
+  console.log(isLoading, data);
+
   return (
     <>
       <GlobalStyle />
