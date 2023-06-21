@@ -4,6 +4,8 @@ import { styled } from "styled-components";
 const SearchBar = styled.form`
   display: flex;
   margin: 2rem;
+  width: 30%;
+  padding: 0 100px;
   gap: 0.5rem;
 `;
 const Button = styled.button`
@@ -19,6 +21,7 @@ const Input = styled.input`
   color: ${(props) => props.theme.textColor};
   border-radius: 10px;
   flex: 3;
+  padding: 0.5rem 1rem;
   width: 100%;
 `;
 function Search() {
