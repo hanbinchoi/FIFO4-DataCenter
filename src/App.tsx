@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { createGlobalStyle, styled } from "styled-components";
-import Title from "./Title";
+import Title from "./components/Title";
 import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./theme";
-import Search from "./Search";
+import Search from "./components/Search";
 import { useQuery } from "react-query";
 import { fetchDivisionInfo, fetchUserId, fetchUserRank } from "./api";
 import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
 import { IUser, divisionState, userState } from "./atoms";
-import Tab from "./Tab";
-import MatchInfo from "./MatchInfo";
+import Tab from "./components/Tab";
+import MatchInfo from "./components/MatchInfo";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`

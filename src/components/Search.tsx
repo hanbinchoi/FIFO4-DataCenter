@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { useSetRecoilState } from "recoil";
-import { userState } from "./atoms";
+import { userState } from "../atoms";
 
 const SearchBar = styled.form`
   display: flex;

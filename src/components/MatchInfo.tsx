@@ -1,10 +1,9 @@
-import { useQueries, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { styled } from "styled-components";
-import { fetchUserInfo, fetchUserRank } from "./api";
+import { fetchUserRank } from "../api";
 
 import { useRecoilState, useRecoilValue } from "recoil";
-import { IDivision, divisionState, userState } from "./atoms";
-import { useState } from "react";
+import { divisionState, userState } from "../atoms";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -61,6 +60,7 @@ function MatchInfo() {
       },
     }
   );
+  console.log(user);
   return (
     <Wrapper>
       <Header>
