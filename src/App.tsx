@@ -5,9 +5,9 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme } from "./theme";
 import Search from "./Search";
 import { useQuery } from "react-query";
-import { fetchData } from "./api";
-import { useRecoilValue } from "recoil";
-import { nicknameState } from "./atoms";
+import { fetchDivisionInfo, fetchUserId, fetchUserRank } from "./api";
+import { useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
+import { IUser, divisionState, userState } from "./atoms";
 import Tab from "./Tab";
 import MatchInfo from "./MatchInfo";
 
@@ -84,12 +84,45 @@ const Container = styled.div`
 `;
 
 function App() {
-  const nickname = useRecoilValue(nicknameState);
-  console.log(nickname);
+  const [user, setUser] = useRecoilState<IUser>(userState);
+  const setDivision = useSetRecoilState(divisionState);
   const [clickedTab, setClickedTab] = useState(0);
+  const notFoundUser: IUser = {
+    accessId: "Not Found User",
+    nickname: "",
+    level: 0,
+    rank: undefined,
+  };
+  const { isLoading: userInfoLoading, data: userInfo } = useQuery(
+    // dependency
+    ["nickname", user.nickname],
+    () => fetchUserId(user.nickname),
+    {
+      // 사용자가 윈도우를 다른곳을 갔다가 오면 재실행 할지 여부
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        // data.message 가 존재하면 없는 아이디
+        if (data?.message) setUser(notFoundUser);
+        else
+          setUser((prev) => {
+            return { ...prev, ...data };
+          });
+      },
+    }
+  );
+  const { isLoading: divisionInfoLoading, data: divisionInfo } = useQuery(
+    ["division"],
+    fetchDivisionInfo,
+    {
+      // 사용자가 윈도우를 다른곳을 갔다가 오면 재실행 할지 여부
+      refetchOnWindowFocus: false,
+      onSuccess: (data) => {
+        setDivision(data);
+      },
+    }
+  );
 
-  // const { isLoading, data } = useQuery("data", () => fetchData(nickname));
-
+  const isLoading = userInfoLoading || divisionInfoLoading;
   return (
     <>
       <GlobalStyle />
@@ -99,7 +132,7 @@ function App() {
           <Title />
           <Search />
           <Tab clickedTab={clickedTab} setClickedTab={setClickedTab} />
-          <MatchInfo />
+          {isLoading ? null : userInfo?.message ? "Loading" : <MatchInfo />}
         </Container>
       </ThemeProvider>
     </>

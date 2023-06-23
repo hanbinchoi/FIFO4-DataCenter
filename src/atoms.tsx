@@ -1,10 +1,28 @@
 import { atom } from "recoil";
-import { recoilPersist } from "recoil-persist";
 
-const { persistAtom } = recoilPersist();
+export interface IUser {
+  accessId: string;
+  nickname: string;
+  level: number;
+  rank: number | undefined;
+}
 
-export const nicknameState = atom({
+export const userState = atom<IUser>({
   key: "nickname",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
+  default: {
+    accessId: "",
+    nickname: "",
+    level: 0,
+    rank: undefined,
+  },
+});
+
+export interface IDivision {
+  divisionId: number;
+  divisionName: string;
+}
+
+export const divisionState = atom<IDivision[]>({
+  key: "division",
+  default: [],
 });

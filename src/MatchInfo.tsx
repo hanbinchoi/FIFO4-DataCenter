@@ -1,4 +1,10 @@
+import { useQueries, useQuery } from "react-query";
 import { styled } from "styled-components";
+import { fetchUserInfo, fetchUserRank } from "./api";
+
+import { useRecoilState, useRecoilValue } from "recoil";
+import { IDivision, divisionState, userState } from "./atoms";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -32,16 +38,39 @@ const Box = styled.div`
   width: 50px;
   height: 50px;
 `;
+
+interface IRankData {
+  matchType: number;
+  division: number;
+  achievementDate: string;
+}
+
 function MatchInfo() {
+  // 받아올 것 - 등급 이미지, 레벨, 닉네임, 구단가치
+  const [user, setUser] = useRecoilState(userState);
+  const division = useRecoilValue(divisionState);
+  const { isLoading, data } = useQuery(
+    ["rank", user],
+    () => fetchUserRank(user.accessId),
+    {
+      // 사용자가 윈도우를 다른곳을 갔다가 오면 재실행 할지 여부
+      refetchOnWindowFocus: false,
+      onSuccess: (data: IRankData[]) => {
+        const rank = data.find((ele) => ele.matchType === 50)?.division;
+        setUser((prev) => ({ ...prev, rank }));
+      },
+    }
+  );
   return (
     <Wrapper>
       <Header>
         <UserInfo>
-          <Box></Box>
-          <Box></Box>
-          <Box></Box>
+          <Box>{user.rank}</Box>
+          <Box>{user.level}</Box>
+          <Box>{user.nickname}</Box>
           <Box></Box>
         </UserInfo>
+
         <RankInfo>
           <Box></Box>
           <Box></Box>

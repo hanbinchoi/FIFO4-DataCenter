@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 const TabMenu = styled.div`
   flex: 1;
   text-align: center;
+  cursor: pointer;
   background-color: #e0dddd;
   &.clicked {
     background-color: gray;

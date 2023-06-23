@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
-import { fetchData } from "./api";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { nicknameState } from "./atoms";
+import { useSetRecoilState } from "recoil";
+import { userState } from "./atoms";
 
 const SearchBar = styled.form`
   display: flex;
@@ -32,12 +31,18 @@ function Search() {
   };
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setNickName(value);
+    setUser((prev) => {
+      return {
+        ...prev,
+        nickname: value,
+      };
+    });
     setValue("");
   };
 
   const [value, setValue] = useState("");
-  const setNickName = useSetRecoilState(nicknameState);
+  const setUser = useSetRecoilState(userState);
+
   return (
     <SearchBar onSubmit={onSubmit}>
       <Input
