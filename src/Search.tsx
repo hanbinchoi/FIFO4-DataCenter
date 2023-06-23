@@ -7,8 +7,7 @@ import { nicknameState } from "./atoms";
 const SearchBar = styled.form`
   display: flex;
   margin: 2rem;
-  width: 40%;
-  padding: 0 100px;
+  width: 100%;
   gap: 0.5rem;
 `;
 const Button = styled.button`

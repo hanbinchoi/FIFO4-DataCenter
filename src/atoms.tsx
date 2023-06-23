@@ -6,4 +6,5 @@ const { persistAtom } = recoilPersist();
 export const nicknameState = atom({
   key: "nickname",
   default: "",
+  effects_UNSTABLE: [persistAtom],
 });

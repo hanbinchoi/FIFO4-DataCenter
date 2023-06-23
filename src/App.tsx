@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createGlobalStyle, styled } from "styled-components";
 import Title from "./Title";
 import { ThemeProvider } from "styled-components";
@@ -8,6 +8,8 @@ import { useQuery } from "react-query";
 import { fetchData } from "./api";
 import { useRecoilValue } from "recoil";
 import { nicknameState } from "./atoms";
+import Tab from "./Tab";
+import MatchInfo from "./MatchInfo";
 
 // 글로벌 스타일 적용 (reset CSS)
 const GlobalStyle = createGlobalStyle`
@@ -38,6 +40,9 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
+}
+* {
+  box-sizing: border-box;
 }
 body {
 	line-height: 1;
@@ -73,8 +78,7 @@ const Container = styled.div`
   justify-content: center;
 
   width: 100vw;
-
-  padding: 1rem 1rem;
+  padding: 3rem 5rem;
   border: 1px solid blue;
   background-color: ${(props) => props.theme.bgColor};
 `;
@@ -82,9 +86,9 @@ const Container = styled.div`
 function App() {
   const nickname = useRecoilValue(nicknameState);
   console.log(nickname);
+  const [clickedTab, setClickedTab] = useState(0);
 
   // const { isLoading, data } = useQuery("data", () => fetchData(nickname));
-  // console.log(isLoading, data);
 
   return (
     <>
@@ -94,6 +98,8 @@ function App() {
         <Container>
           <Title />
           <Search />
+          <Tab clickedTab={clickedTab} setClickedTab={setClickedTab} />
+          <MatchInfo />
         </Container>
       </ThemeProvider>
     </>
