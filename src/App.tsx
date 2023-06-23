@@ -103,10 +103,7 @@ function App() {
       onSuccess: (data) => {
         // data.message 가 존재하면 없는 아이디
         if (data?.message) setUser(notFoundUser);
-        else
-          setUser((prev) => {
-            return { ...prev, ...data };
-          });
+        else setUser((prev) => ({ ...prev, ...data }));
       },
     }
   );
